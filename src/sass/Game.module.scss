@@ -20,7 +20,6 @@
 }
 
 .gameGrid {
-  font-size: 5rem;
   display: grid;
 
   min-width: 50rem;
@@ -33,18 +32,26 @@
 }
 
 .gameButton {
+  font-size: 20rem;
   border: none;
   color: white;
   overflow: hidden;
-
   border-radius: 10px;
 
-  background-image: linear-gradient(
-    to bottom right,
-    hsl(0, 79%, 38%),
-    hsl(0, 79%, 48%)
-  );
-  background-size: cover;
+  &:hover {
+    transform: translateY(0.3rem);
+    border: 0.3rem solid silver;
+  }
 
-  font-size: 20px;
+  &:active {
+    transform: translateY(0.6rem);
+  }
+}
+
+.red {
+  background-color: hsl(0, 79%, 48%);
+}
+
+.green {
+  background-color: green;
 }
