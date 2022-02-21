@@ -1,0 +1,50 @@
+.container {
+  height: 100vh;
+  flex-basis: 80%; // Width of the container
+
+  //Grid definition
+  display: grid;
+  grid-template-rows: max-content auto;
+  grid-template-columns: clamp(50rem, 80%, 120rem);
+
+  align-items: center;
+  justify-content: center;
+}
+
+.heading {
+  color: white;
+  font-size: 3rem;
+  text-align: center;
+  margin: 1rem;
+  margin-bottom: -2rem;
+}
+
+.gameGrid {
+  font-size: 5rem;
+  display: grid;
+
+  min-width: 50rem;
+  flex-shrink: 1;
+  height: 80%;
+
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.gameButton {
+  border: none;
+  color: white;
+  overflow: hidden;
+
+  border-radius: 10px;
+
+  background-image: linear-gradient(
+    to bottom right,
+    hsl(0, 79%, 38%),
+    hsl(0, 79%, 48%)
+  );
+  background-size: cover;
+
+  font-size: 20px;
+}
