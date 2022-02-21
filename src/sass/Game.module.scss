@@ -32,11 +32,13 @@
 }
 
 .gameButton {
-  font-size: 20rem;
+  font-size: 15vw;
   border: none;
   color: white;
   overflow: hidden;
   border-radius: 10px;
+  text-align: center;
+  // margin: 0 auto;
 
   &:hover {
     transform: translateY(0.3rem);
