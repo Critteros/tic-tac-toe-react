@@ -1,12 +1,10 @@
-import Game from './Game'
-import styles from './sass/App.module.scss'
+import { TicTacToe } from './components/TicTacToe';
+import styles from './App.module.scss';
 
-const App = () => {
+export const App = () => {
   return (
-    <div className={styles.App}>
-      <Game/>
-    </div>
+    <main className={styles.App}>
+      <TicTacToe />
+    </main>
   );
-}
-
-export default App;
+};
