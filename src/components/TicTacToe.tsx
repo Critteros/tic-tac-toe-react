@@ -14,7 +14,9 @@ export const TicTacToe = () => {
         {playingFields.map(({ id, color, owner }) => (
           <button
             key={id}
-            className={`${styles.gameButton} ${color === 'green' ? styles.green : styles.red}`}
+            className={`${styles.gameButton} ${
+              color === 'tileWon' ? styles.tileWon : styles.tileDefault
+            }`}
             onClick={() => handleUserClick(id)}
           >
             {owner}

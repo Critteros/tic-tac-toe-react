@@ -15,7 +15,7 @@
 }
 
 .resetButton {
-  background-color: yellow;
+  background-color: #eef36a;
   margin: 2rem 0 auto;
   font-size: 3rem;
   flex-grow: 0;
@@ -65,10 +65,11 @@
   }
 }
 
-.red {
-  background-color: hsl(0, 79%, 48%);
+.tileDefault {
+  //background-color: #3f3047;
+  background-color: #5c6bc0;
 }
 
-.green {
-  background-color: green;
+.tileWon {
+  background-color: #689f38;
 }

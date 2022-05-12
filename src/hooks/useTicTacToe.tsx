@@ -8,7 +8,7 @@ enum Players {
 type PlayingField = {
   id: number;
   owner: Players | null;
-  color: 'red' | 'green';
+  color: 'tileDefault' | 'tileWon';
 };
 
 const winningConditions = [
@@ -65,7 +65,7 @@ const initialFieldsState = Array.from(
   (_, index): PlayingField => ({
     id: index,
     owner: null,
-    color: 'red',
+    color: 'tileDefault',
   }),
 );
 
@@ -106,7 +106,7 @@ export const useTicTacToe = () => {
     if (winner) {
       setPlayingFields(
         playingFields.map((val) => {
-          if (winner.includes(val.id)) return { ...val, color: 'green' };
+          if (winner.includes(val.id)) return { ...val, color: 'tileWon' };
           return { ...val };
         }),
       );
