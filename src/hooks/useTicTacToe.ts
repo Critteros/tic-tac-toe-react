@@ -84,6 +84,8 @@ const initialBannerMessage = 'Player One Turn';
 export const useTicTacToe = () => {
   const [playingFields, setPlayingFields] = useState(structuredClone(initialFieldsState));
   const [currentTurn, setCurrentTurn] = useState(initialPlayerState);
+
+  //Yea I know this can be implemented in the component itself but I choose this way
   const [bannerMessage, setBannerMessage] = useState(initialBannerMessage);
   const [isGameOver, setIsGameOver] = useState(false);
 
@@ -131,21 +133,24 @@ export const useTicTacToe = () => {
       resetState();
       return;
     }
-    setPlayingFields(
-      playingFields.map((field) => {
-        if (field.id === index && field.owner === null) {
-          setCurrentTurn((prevState) => {
-            if (prevState === Players.PlayerOne) {
-              setBannerMessage('Player Two turn');
-              return Players.PlayerTwo;
-            }
-            setBannerMessage('Player One Turn');
-            return Players.PlayerOne;
-          });
-          return { ...field, owner: currentTurn };
-        }
+
+    const clickedField = playingFields.find((el) => el.id === index);
+    if (clickedField === undefined || clickedField.owner !== null) return;
+
+    setPlayingFields((prevState) =>
+      prevState.map((field) => {
+        if (field.id === index && field.owner === null)
+          return {
+            ...field,
+            owner: currentTurn === Players.PlayerOne ? Players.PlayerOne : Players.PlayerTwo,
+          };
         return { ...field };
       }),
+    );
+
+    setBannerMessage(currentTurn === Players.PlayerTwo ? 'Player One Turn' : 'Player Two Turn');
+    setCurrentTurn((prevState) =>
+      prevState === Players.PlayerOne ? Players.PlayerTwo : Players.PlayerOne,
     );
   };
 
