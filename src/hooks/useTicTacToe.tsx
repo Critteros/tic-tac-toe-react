@@ -98,12 +98,6 @@ export const useTicTacToe = () => {
     };
     if (isGameOver) return;
 
-    if (playingFields.every(({ owner }) => owner)) {
-      setBannerMessage('No one won!');
-      setIsGameOver(true);
-      return;
-    }
-
     const playerOneWon = checkIfPlayerIsWinning(Players.PlayerOne);
     const playerTwoWon = checkIfPlayerIsWinning(Players.PlayerTwo);
 
@@ -119,15 +113,22 @@ export const useTicTacToe = () => {
       setIsGameOver(true);
       if (playerOneWon) setBannerMessage('Player One Won');
       else setBannerMessage('Player Two Won');
+    } else if (playingFields.every(({ owner }) => owner)) {
+      setBannerMessage('No one won!');
+      setIsGameOver(true);
     }
   }, [playingFields, isGameOver]);
 
+  const resetState = () => {
+    setPlayingFields(structuredClone(initialFieldsState));
+    setCurrentTurn(initialPlayerState);
+    setBannerMessage(initialBannerMessage);
+    setIsGameOver(false);
+  };
+
   const handleUserClick = (index: number) => {
     if (isGameOver) {
-      setPlayingFields(structuredClone(initialFieldsState));
-      setCurrentTurn(initialPlayerState);
-      setBannerMessage(initialBannerMessage);
-      setIsGameOver(false);
+      resetState();
       return;
     }
     setPlayingFields(
@@ -148,5 +149,5 @@ export const useTicTacToe = () => {
     );
   };
 
-  return { bannerMessage, playingFields, handleUserClick };
+  return { bannerMessage, playingFields, handleUserClick, resetState };
 };
